@@ -12,7 +12,8 @@ class PyCrawl(object):
     error, result = None, None
     try:
       result = self.opener.open(url)
-      if result.info().dict['content-length'] is '0':
+      info = result.info().dict
+      if 'content-length' in info and info['content-length'] is '0':
         raise CrawlError("204: No content")
     except ValueError:
       error = "Invalid URL value"
