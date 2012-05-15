@@ -36,8 +36,19 @@ class Alexa(object):
       return None
     return {"domain": domain, "rank": self.by_domain[domain]}
 
+  def top(self, how_many):
+    sites = []
+    rank = 1
+    while len(sites) < how_many:
+      site = self.find_by_rank(rank)
+      if site is not None:
+        sites.append(site)
+      rank += 1
+    return sites
+
 if __name__=="__main__":
   # basic tests
   alexa = Alexa()
   print alexa.find_by_rank(123)
   print alexa.find_by_domain("youtube.com")
+  print alexa.top(10)
