@@ -1,3 +1,4 @@
+import constants
 import pycrawl
 
 class FaviconCrawl(pycrawl.PyCrawl):
@@ -10,6 +11,6 @@ class FaviconCrawl(pycrawl.PyCrawl):
 
 if __name__=="__main__":
   # basic tests
-  fc = FaviconCrawl("Mozilla/5.0 (compatible; PyCrawl/0.1)")
+  fc = FaviconCrawl(constants.USER_AGENT)
   fc.download("www.google.com")
   fc.download("www.nonexistent-website-q3t3qct23tt32.com")
