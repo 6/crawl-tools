@@ -1,4 +1,5 @@
 import constants
+import random
 
 class Alexa(object):
   def __init__(self):
@@ -46,9 +47,18 @@ class Alexa(object):
       rank += 1
     return sites
 
+  def random(self, how_many):
+    sites = []
+    while len(sites) < how_many:
+      site = self.find_by_rank(random.randrange(1, 1000001))
+      if site is not None:
+        sites.append(site)
+    return sites
+
 if __name__=="__main__":
   # basic tests
   alexa = Alexa()
   print alexa.find_by_rank(123)
   print alexa.find_by_domain("youtube.com")
   print alexa.top(10)
+  print alexa.random(10)
