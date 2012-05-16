@@ -26,11 +26,14 @@ class Alexa(object):
     if "/" in domain:
       # alexa has lots of non-domains near the end of the list
       return [None, None]
-    # TODO this is way too slow
-    #if self.domain_parser.domain(domain) != domain:
-    #  # ensure domain isn't subdomain (e.g. ignore whatever.blogspot.com)
-    #  print domain
-    #  return [None, None]
+    if self.domain_parser.domain(domain) != domain:
+      # Ensure domain isn't subdomain or IP address.
+      # Actual examples that are now ignored:
+      # directoryplaza.cz.cc
+      # pretamoda.wordpress.com
+      # 195.62.227.104
+      # cscartdevelopment.blogspot.in
+      return [None, None]
     return [int(rank), domain]
     
   def find_by_rank(self, rank):
