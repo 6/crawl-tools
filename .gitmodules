@@ -1,3 +1,0 @@
-[submodule "vendor/publicsuffix"]
-	path = vendor/publicsuffix
-	url = https://github.com/jpwatts/publicsuffix.git
