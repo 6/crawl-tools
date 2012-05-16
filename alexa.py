@@ -1,8 +1,10 @@
 import constants
 import random
+import publicsuffixparse
 
 class Alexa(object):
   def __init__(self):
+    self.domain_parser = publicsuffixparse.parser()
     self.by_rank = {}
     self.by_domain = {}
     with open(constants.DATA_PATH_ALEXA_CSV, 'r') as f:
@@ -24,7 +26,11 @@ class Alexa(object):
     if "/" in domain:
       # alexa has lots of non-domains near the end of the list
       return [None, None]
-    #TODO ensure domain isn't subdomain (e.g. ignore whatever.blogspot.com)
+    # TODO this is way too slow
+    #if self.domain_parser.domain(domain) != domain:
+    #  # ensure domain isn't subdomain (e.g. ignore whatever.blogspot.com)
+    #  print domain
+    #  return [None, None]
     return [int(rank), domain]
     
   def find_by_rank(self, rank):
