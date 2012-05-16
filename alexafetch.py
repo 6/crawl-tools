@@ -8,8 +8,8 @@ def fetch():
   if error is not None:
     print "====\nERROR:\n", error
     return
-  zip = zipfile.ZipFile(constants.DATA_PATH_ALEXA, "r")
-  data = zip.read(constants.ALEXA_CSV_FILE)
+  zipf = zipfile.ZipFile(constants.DATA_PATH_ALEXA, "r")
+  data = zipf.read(constants.ALEXA_CSV_FILE)
   with open(constants.DATA_PATH_ALEXA_CSV, 'wb') as f:
     f.write(data)
 
