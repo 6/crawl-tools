@@ -4,3 +4,6 @@
 [submodule "vendor/colorific"]
 	path = vendor/colorific
 	url = https://github.com/99designs/colorific.git
+[submodule "vendor/webkit2png"]
+	path = vendor/webkit2png
+	url = https://github.com/paulhammond/webkit2png.git
