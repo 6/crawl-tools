@@ -1,3 +1,6 @@
 [submodule "vendor/publicsuffix"]
 	path = vendor/publicsuffix
 	url = https://github.com/onlinemediagroup/publicsuffix.git
+[submodule "vendor/colorific"]
+	path = vendor/colorific
+	url = https://github.com/99designs/colorific.git
