@@ -8,6 +8,11 @@ import colorific
 def numpy_array_of(image_path):
   return numpy.array(Image.open(image_path))
 
+def dimensions(image_path):
+  shape = numpy_array_of(image_path).shape
+  # returns (width, height)
+  return (shape[1], shape[0])
+
 # n_quantized: start with an adaptive palette of this size
 # min_distance: min distance to consider two colors different
 # min_prominence: ignore if less than this proportion of image
@@ -21,5 +26,5 @@ def palette(image_path, min_saturation=0.05, min_prominence=0.01,
   return [colorific.rgb_to_hex(c.value) for c in colorp.colors]
 
 if __name__=="__main__":
-  print numpy_array_of(constants.DATA_PATH_SCREENSHOT_FILE.format("google.jp"))
+  print dimensions(constants.DATA_PATH_SCREENSHOT_FILE.format("google.jp"))
   print palette(constants.DATA_PATH_FAVICON.format("www.google.com"))
