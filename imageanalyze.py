@@ -12,6 +12,11 @@ def dimensions(image_path):
   shape = numpy_array_of(image_path).shape
   # returns (width, height)
   return (shape[1], shape[0])
+  
+def mean_color(image_path):
+  image = numpy_array_of(image_path)
+  # returns (red, green, blue) means
+  return tuple(numpy.mean(image[:,:,i]) for i in range(3))
 
 # n_quantized: start with an adaptive palette of this size
 # min_distance: min distance to consider two colors different
@@ -28,3 +33,4 @@ def palette(image_path, min_saturation=0.05, min_prominence=0.01,
 if __name__=="__main__":
   print dimensions(constants.DATA_PATH_SCREENSHOT_FILE.format("google.jp"))
   print palette(constants.DATA_PATH_FAVICON.format("www.google.com"))
+  print mean_color(constants.DATA_PATH_FAVICON.format("facebook.com"))
